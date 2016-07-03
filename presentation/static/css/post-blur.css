@@ -1,0 +1,15 @@
+.post-blur {
+  transition-property: -webkit-filter, filter;
+  transition-duration: 1s;
+  transition-timing-function: linear
+}
+
+.active .post-blur {
+  filter: blur(0);
+  -webkit-filter: blur(0);
+}
+
+.step:not(.active) .post-blur {
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}

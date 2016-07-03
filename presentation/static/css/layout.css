@@ -1,0 +1,19 @@
+.step-bordered {
+  padding: 40px 60px;
+
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+
+.step-width-medium {
+  width: 900px;
+}
+
+.step-width-large {
+  width: 1200px;
+}

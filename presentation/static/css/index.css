@@ -1,0 +1,31 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+  min-height: 740px;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.my-name {
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: linear
+  opacity: 1;
+}
+
+.impress-on-step-3 .my-name,
+.impress-on-step-4 .my-name,
+.impress-on-step-5 .my-name,
+.impress-on-step-6 .my-name,
+.impress-on-step-7 .my-name,
+.impress-on-step-8 .my-name,
+.impress-on-step-9 .my-name,
+.impress-on-step-10 .my-name,
+.impress-on-step-11 .my-name,
+.impress-on-step-12 .my-name,
+.impress-on-step-13 .my-name,
+.impress-on-step-14 .my-name,
+.impress-on-step-15 .my-name {
+  opacity: 0;
+}

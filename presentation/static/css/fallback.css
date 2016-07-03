@@ -1,0 +1,13 @@
+.fallback-message {
+  width: 780px;
+  margin: 20px auto;
+  border: 1px solid #E4C652;
+  text-align: center;
+  border-radius: 10px;
+  background: #EEDC94;
+  font-family: sans-serif;
+}
+
+.impress-supported .fallback-message {
+  display: none;
+}

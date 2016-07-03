@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SydJS - Mocking and False Positives</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="static/css/index.css" rel="stylesheet">
+    <link href="static/css/headers.css" rel="stylesheet">
+    <link href="static/css/layout.css" rel="stylesheet">
+    <link href="static/css/fallback.css" rel="stylesheet">
+    <link href="static/css/post-blur.css" rel="stylesheet">
+    <link href="static/css/personal-projects.css" rel="stylesheet">
+    <link href="static/css/like-a-link.css" rel="stylesheet">
+    <link href="static/vendors/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+  <body class="impress-not-supported">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js</p>
+    </div>
+    <div id="impress">
+      <div
+        class="step step-width-medium my-name"
+        data-x="-300"
+        data-y="-2000"
+        data-scale="10"
+      >
+        <h3 class="secondary-header no-margin-bottom">
+          Fagner Brack
+        </h3>
+        <ul class="personal-projects">
+          <li class="like-a-link">
+            medium.com/@fagnerbrack
+          </li>
+          <li class="like-a-link">
+           github.com/js-cookie/js-cookie
+          </li>
+          <li class="like-a-link">
+            github.com/impress/impress.js
+          </li>
+        </ul>
+      </div>
+      <div
+        class="step step-width-medium post-fade-visible"
+        data-x="-300"
+        data-y="0"
+        data-scale="10"
+      >
+        <h1 class="main-header post-blur">Mocking And False Positives</h1>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="3500"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">Scenario</h2>
+        <pre><code class="javascript">
+          const request = require( "./custom-request" );
+
+          const storeToken = function( token, callback ) {
+            if ( !isValid( token ) ) {
+              callback( new Error( "Token is not valid" ) );
+              return;
+            }
+            
+            // Complexity
+
+            request.post( "/store-token", token, callback );
+
+            // Complexity
+          };
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="2900"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">Writing the test! ヽ(´▽`)/</h2>
+        <pre><code class="javascript">
+          describe( "Given any token", function() {
+            describe( "When storing that token", function() {
+              it( "passes the same token to the API request", function() {
+                // TODO
+              } );
+            } );
+          } );
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="2300"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">Running ☜(⌒▽⌒)☞ the test!</h2>
+        <pre><code class="javascript">
+          // TODO running the test
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="1700"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">The problem? 눈_눈</h2>
+        <pre><code class="javascript">
+          const request = require('./custom-request');
+
+          const storeToken = function(token, callback) {
+            if (!isValid(token)) {
+              callback(new Error("Token is not valid"));
+              return;
+            }
+            
+            // Complexity
+
+            if (shouldMarkAsInvalid(token)) {
+              token = 'INVALID';
+            }
+
+            // Complexity
+
+            request.post("/store-token", token, callback);
+
+            // Complexity
+          }
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="1100"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">False positive! щ（ﾟДﾟщ）</h2>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="500"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">Run the test... ε=ε=ε=┌(;*´Д`)ﾉ</h2>
+        <pre><code class="javascript">
+          // TODO running the test
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-100"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">...success! (╯°□°）╯︵ ┻━┻</h2>
+        <pre><code class="javascript">
+          // TODO successful test
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-700"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">Solutions? ¯\_(⊙︿⊙)_/¯</h2>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-1300"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">Pass by reference! ┬─┬﻿ ノ( ゜-゜ノ)</h2>
+        <pre><code class="javascript">
+          // TODO fix test, passing by reference
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-1900"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">Generative testing? ٩◔̯◔۶</h2>
+        <pre><code class="javascript">
+          // TODO Create a lot of inputs
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-2500"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">Do not use mocks! ¯\_(ツ)_/¯</h2>
+        <pre><code class="javascript">
+          // TODO Example using pure functions
+        </code></pre>
+      </div>
+      <div
+        class="step step-width-large"
+        data-x="-3100"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+        data-rotate-x="-40"
+        data-rotate-y="0"
+      >
+        <h2 class="secondary-header">No silver bullets! (╯°□°)--︻╦╤─ - - - </h2>
+      </div>
+      <div
+        class="step step-width-medium"
+        data-x="-3700"
+        data-y="1000"
+        data-rotate="90"
+        data-z="500"
+      >
+        <h2 class="secondary-header">Thank you! (－‿ ◕)</h2>
+      </div>
+    </div>
+    <script src="static/vendor/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
