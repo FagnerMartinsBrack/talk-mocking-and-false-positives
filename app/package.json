@@ -1,0 +1,15 @@
+{
+  "name": "sydjs-mocking-and-false-positives",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "expect": "1.20.2",
+    "mocha": "2.5.3"
+  },
+  "dependencies": {
+    "bluebird": "3.4.1"
+  }
+}
