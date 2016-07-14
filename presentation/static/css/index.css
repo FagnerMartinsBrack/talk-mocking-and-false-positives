@@ -7,6 +7,10 @@ body {
   margin-bottom: 0;
 }
 
+.big-link {
+  font-size: 30px;
+}
+
 .my-name {
   transition-property: opacity;
   transition-duration: 1s;
