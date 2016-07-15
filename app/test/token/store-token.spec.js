@@ -5,7 +5,7 @@ const storeToken = require( "../../src/token/store-token" );
 const Promise = require( "bluebird" );
 const expect = require( "expect" );
 
-describe( "[False Positive] Given any token", function() {
+describe( "Given any token", function() {
   let fakeToken;
 
   beforeEach(function() {
