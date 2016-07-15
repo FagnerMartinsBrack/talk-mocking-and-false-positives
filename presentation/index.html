@@ -59,20 +59,17 @@
       >
         <h2 class="secondary-header">Scenario</h2>
         <pre><code class="javascript">
-          const request = require( "./custom-request" );
+          module.exports = function( token ) {
+            return Promise.try(function() {
+              if ( !isValid( token ) ) {
+                return Promise.reject( new Error( "Token is not valid" ) );
+              }
 
-          const storeToken = function( token, callback ) {
-            if ( !isValid( token ) ) {
-              callback( new Error( "Token is not valid" ) );
-              return;
-            }
-            
-            // Complexity
+              // complexity
 
-            request.post( "/store-token", token, callback );
-
-            // Complexity
-          };
+              return apiRequest.post( "/store-token", "INVALID" );
+            });
+          }
         </code></pre>
       </div>
       <div
@@ -86,13 +83,36 @@
       >
         <h2 class="secondary-header">Writing the test! ヽ(´▽`)/</h2>
         <pre><code class="javascript">
-          describe( "Given any token", function() {
-            describe( "When storing that token", function() {
-              it( "passes the same token to the API request", function() {
-                // TODO
-              } );
-            } );
-          } );
+          describe( "Given a fakeToken", function() {
+            let fakeToken;
+
+            beforeEach(function() {
+              fakeToken = "INVALID"
+            });
+
+            describe( "When storeToken(fakeToken)", function() {
+              let promiseToStoreToken;
+              let apiPostRequestSpy;
+
+              beforeEach(function() {
+                apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                promiseToStoreToken = storeToken( fakeToken );
+              });
+
+              afterEach(function() {
+                sandbox.restore();
+              });
+
+              it( "calls apiRequest(fakeToken)", function() {
+                return Promise.try(function() {
+                  return promiseToStoreToken;
+                }).then(function() {
+                  expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
+                  expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                });
+              });
+            });
+          });
         </code></pre>
       </div>
       <div
@@ -103,8 +123,10 @@
         data-z="500"
       >
         <h2 class="secondary-header">Running ☜(⌒▽⌒)☞ the test!</h2>
-        <pre><code class="javascript">
-          // TODO running the test
+        <pre><code>
+          Given a fakeToken
+            When storeToken(fakeToken)
+              ✓ calls apiRequest(fakeToken)
         </code></pre>
       </div>
       <div
@@ -118,26 +140,23 @@
       >
         <h2 class="secondary-header">The problem? 눈_눈</h2>
         <pre><code class="javascript">
-          const request = require('./custom-request');
+          module.exports = function( token ) {
+            return Promise.try(function() {
+              if ( !isValid( token ) ) {
+                return Promise.reject( new Error( "Token is not valid" ) );
+              }
 
-          const storeToken = function(token, callback) {
-            if (!isValid(token)) {
-              callback(new Error("Token is not valid"));
-              return;
-            }
-            
-            // Complexity
+              // complexity
 
-            if (shouldMarkAsInvalid(token)) {
-              token = 'INVALID';
-            }
+              if ( shouldMarkAsInvalid( token ) ) {
+                token = "INVALID";
+              }
 
-            // Complexity
+              // complexity
 
-            request.post("/store-token", token, callback);
-
-            // Complexity
-          }
+              return apiRequest.post( "/store-token", "INVALID" );
+            });
+          };
         </code></pre>
       </div>
       <div
@@ -160,7 +179,9 @@
       >
         <h2 class="secondary-header">Run the test... ε=ε=ε=┌(;*´Д`)ﾉ</h2>
         <pre><code class="javascript">
-          // TODO running the test
+          Given a fakeToken
+            When storeToken(fakeToken)
+              ...
         </code></pre>
       </div>
       <div
@@ -172,7 +193,9 @@
       >
         <h2 class="secondary-header">...success! (╯°□°）╯︵ ┻━┻</h2>
         <pre><code class="javascript">
-          // TODO successful test
+          Given a fakeToken
+            When storeToken(fakeToken)
+              ✓ calls apiRequest(fakeToken)
         </code></pre>
       </div>
       <div
@@ -195,7 +218,38 @@
       >
         <h2 class="secondary-header">Pass by reference! ┬─┬﻿ ノ( ゜-゜ノ)</h2>
         <pre><code class="javascript">
-          // TODO fix test, passing by reference
+          describe( "Given a fakeToken", function() {
+            let fakeToken;
+
+            beforeEach(function() {
+              // Here is the difference!
+              fakeToken = new String( "INVALID" );
+              // fakeToken = "INVALID"
+            });
+
+            describe( "When storeToken(fakeToken)", function() {
+              let promiseToStoreToken;
+              let apiPostRequestSpy;
+
+              beforeEach(function() {
+                apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                promiseToStoreToken = storeToken( fakeToken );
+              });
+
+              afterEach(function() {
+                sandbox.restore();
+              });
+
+              it( "calls apiRequest(fakeToken)", function() {
+                return Promise.try(function() {
+                  return promiseToStoreToken;
+                }).then(function() {
+                  expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
+                  expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                });
+              });
+            });
+          });
         </code></pre>
       </div>
       <div
@@ -209,7 +263,38 @@
       >
         <h2 class="secondary-header">Generative testing? ٩◔̯◔۶</h2>
         <pre><code class="javascript">
-          // TODO Create a lot of inputs
+          ["A", "LOT", "OF", "RANDOM", "STRINGS"].forEach(function( randomString ) {
+            describe( `Given '${randomString}'`, function() {
+              let fakeToken;
+
+              beforeEach(function() {
+                fakeToken = randomString
+              });
+
+              describe( `When storeToken('${randomString}')`, function() {
+                let promiseToStoreToken;
+                let apiPostRequestSpy;
+
+                beforeEach(function() {
+                  apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                  promiseToStoreToken = storeToken( fakeToken );
+                });
+
+                afterEach(function() {
+                  sandbox.restore();
+                });
+
+                it( `calls apiRequest('${randomString}')`, function() {
+                  return Promise.try(function() {
+                    return promiseToStoreToken;
+                  }).then(function() {
+                    expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
+                    expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                  });
+                });
+              });
+            });
+          });
         </code></pre>
       </div>
       <div
@@ -221,7 +306,12 @@
       >
         <h2 class="secondary-header">Do not use mocks! ¯\_(ツ)_/¯</h2>
         <pre><code class="javascript">
-          // TODO Example using pure functions
+          // No complexity
+          module.exports = function( token ) {
+            return Promise.try(function() {
+              return apiRequest.post( "/store-token", token );
+            });
+          };
         </code></pre>
       </div>
       <div
