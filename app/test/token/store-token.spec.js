@@ -6,7 +6,7 @@ const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
 const sandbox = require( "sinon" ).sandbox.create();
 
-describe( "Given any token", function() {
+describe( "Given a fakeToken", function() {
   let fakeToken;
 
   beforeEach(function() {
@@ -14,7 +14,7 @@ describe( "Given any token", function() {
     fakeToken = "INVALID"
   });
 
-  describe( "When trying to store", function() {
+  describe( "When storeToken(fakeToken)", function() {
     let promiseToStoreToken;
     let apiPostRequestSpy;
 
@@ -27,7 +27,7 @@ describe( "Given any token", function() {
       sandbox.restore();
     });
 
-    it( "pass the same token to the API request function", function() {
+    it( "calls apiRequest(fakeToken)", function() {
       return Promise.try(function() {
         return promiseToStoreToken;
       }).then(function() {
