@@ -6,7 +6,7 @@ const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
 const sandbox = require( "sinon" ).sandbox.create();
 
-describe( "Given a fakeToken", function() {
+describe.only( "Given a fakeToken", function() {
   let fakeToken;
 
   beforeEach(function() {

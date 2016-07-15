@@ -22,4 +22,4 @@ module.exports = function( token ) {
 
     return apiRequest.post( "/store-token", "INVALID" );
   });
-}
+};
