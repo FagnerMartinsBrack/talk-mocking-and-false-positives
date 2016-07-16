@@ -20,6 +20,6 @@ module.exports = function storeToken( token ) {
 
     // complexity
 
-    return apiRequest.post( "/store-token", "INVALID" );
+    return apiRequest.post( "/store-token", token );
   });
 };

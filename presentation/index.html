@@ -59,7 +59,7 @@
       >
         <h2 class="secondary-header">Scenario</h2>
         <pre><code class="javascript">
-          module.exports = function( token ) {
+          module.exports = function storeToken( token ) {
             return Promise.try(function() {
               if ( !isValid( token ) ) {
                 return Promise.reject( new Error( "Token is not valid" ) );
@@ -67,7 +67,7 @@
 
               // complexity
 
-              return apiRequest.post( "/store-token", "INVALID" );
+              return apiRequest.post( "/store-token", token );
             });
           }
         </code></pre>
@@ -103,7 +103,7 @@
                 sandbox.restore();
               });
 
-              it( "calls apiRequest(fakeToken)", function() {
+              it( "calls apiRequest('/store-token', fakeToken)", function() {
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
@@ -154,7 +154,7 @@
 
               // complexity
 
-              return apiRequest.post( "/store-token", "INVALID" );
+              return apiRequest.post( "/store-token", token );
             });
           };
         </code></pre>
