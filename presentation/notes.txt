@@ -1,0 +1,78 @@
+## Step 1 - Fagner Brack
+
+* My name
+* Blog
+* Two projects
+* This presentation is impress.js
+
+## Step 2 - Mocking And False Positives
+
+* If necessary: What is mocking?
+
+## Step 3 - Scenario
+
+* Legacy app
+* Imagine complexity
+
+## Step 4 - Writing the test!
+
+* Explain each line of the test
+* If necessary: Explain the spy example
+* Explain how `fakeToken` is being passed
+
+## Step 5 - Running the test
+
+* All good, we expect it to pass
+
+## Step 6 - The problem?
+
+* Explain mistakes can happen when we deal with complexity
+* Do not say false-positive until next slide
+
+## Step 7 - False positive!
+
+* Go back and explain why we will have a false-positive
+* Do not say we expect to fail, just yet
+
+## Step 8 - Run the test and...
+
+* We expect the test to fail, because we changed the code
+
+## Step 9 - ...success!
+
+* It succeeds, causing a false-positive
+
+## Step 10 - Solutions?
+
+* Explain I found 3 alternatives to potentially solve this
+* If anyone knows a better one, please tell me
+
+## Step 11 - Pass by reference!
+
+* Ok, let's put the table back
+* Pass instance, assuming the code will work with an instance
+
+## Step 12 - Generative testing?
+
+* Many samples might help catching something wrong
+* Still not 100%
+* Triangulation
+  * 1 sextant - rely on manufacturer tests
+  * 2 sextants - Check if both are likely to be correct
+  * 3 sextants - If 2 are not correct, the third will point which one is most likely to be
+
+## Step 13 - Do not use mocks!
+
+* Functions should be small and do one thing
+* Code review static testing
+* Equational Reasoning
+* If necessary: Explain TDD
+* TDD help a better architecture
+
+## Step 14 - No silver bullets!
+
+* Start with a simple test, improve as necessary
+* Programming is not easy
+* IF THERE'S TIME ONLY: Show the code running
+
+## Step 15 - Thank you!
