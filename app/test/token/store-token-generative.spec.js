@@ -28,7 +28,7 @@ describe( "Generative testing", function() {
           sandbox.restore();
         });
 
-        it( `calls apiRequest('${randomString}')`, function() {
+        it( `calls apiRequest.post('${randomString}')`, function() {
           return Promise.try(function() {
             return promiseToStoreToken;
           }).then(function() {

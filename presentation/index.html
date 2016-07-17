@@ -45,7 +45,7 @@
       <div
         class="step step-width-medium post-fade-visible"
         data-x="-300"
-        data-y="0"
+        data-y="-500"
         data-scale="10"
       >
         <h1 class="primary-header post-blur">Mocking And False Positives</h1>
@@ -103,7 +103,7 @@
                 sandbox.restore();
               });
 
-              it( "calls apiRequest('/store-token', fakeToken)", function() {
+              it( "calls apiRequest.post('/store-token', fakeToken)", function() {
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
@@ -126,7 +126,7 @@
         <pre><code>
           Given a fakeToken
             When storeToken(fakeToken)
-              ✓ calls apiRequest(fakeToken)
+              ✓ calls apiRequest.post(fakeToken)
         </code></pre>
       </div>
       <div
@@ -195,7 +195,7 @@
         <pre><code class="javascript">
           Given a fakeToken
             When storeToken(fakeToken)
-              ✓ calls apiRequest(fakeToken)
+              ✓ calls apiRequest.post(fakeToken)
         </code></pre>
       </div>
       <div
@@ -240,7 +240,7 @@
                 sandbox.restore();
               });
 
-              it( "calls apiRequest(fakeToken)", function() {
+              it( "calls apiRequest.post(fakeToken)", function() {
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
@@ -284,7 +284,7 @@
                   sandbox.restore();
                 });
 
-                it( `calls apiRequest('${randomString}')`, function() {
+                it( `calls apiRequest.post('${randomString}')`, function() {
                   return Promise.try(function() {
                     return promiseToStoreToken;
                   }).then(function() {
@@ -307,7 +307,7 @@
         <h2 class="secondary-header">Do not use mocks! ¯\_(ツ)_/¯</h2>
         <pre><code class="javascript">
           // No complexity
-          module.exports = function( token ) {
+          module.exports = function storeToken( token ) {
             return Promise.try(function() {
               return apiRequest.post( "/store-token", token );
             });

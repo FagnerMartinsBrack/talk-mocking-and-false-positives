@@ -27,7 +27,7 @@ describe.only( "Given a fakeToken", function() {
       sandbox.restore();
     });
 
-    it( "calls apiRequest('/store-token', fakeToken)", function() {
+    it( "calls apiRequest.post('/store-token', fakeToken)", function() {
       return Promise.try(function() {
         return promiseToStoreToken;
       }).then(function() {
