@@ -17,7 +17,7 @@
 ## Step 4 - Writing the test!
 
 * Explain each line of the test
-* If necessary: Explain the spy example
+* If necessary: Explain the mocking example
 * Explain how `fakeToken` is being passed
 
 ## Step 5 - Running the test
@@ -62,18 +62,16 @@
   * 2 sextants - Check if both are likely to be correct
   * 3 sextants - If 2 are not correct, the third will point which one is most likely to be
 
-## Step 13 - Avoid using mocks!
+## Step 13 - Avoid mocks!
 
 * Functions should be small and do one thing
 * Code review static testing
 * Equational Reasoning
-* If necessary: Explain TDD
-* TDD help a better architecture
 
 ## Step 14 - No silver bullets!
 
 * Start with a simple test, improve as necessary
-* Programming is not easy
+* Programming is not easy / tradeoffs
 * IF THERE'S TIME ONLY: Show the code running
 
 ## Step 15 - Thank you!
