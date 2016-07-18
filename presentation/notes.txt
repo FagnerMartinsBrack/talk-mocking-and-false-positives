@@ -51,7 +51,7 @@
 
 * Ok, let's put the table back
 * Pass instance, assuming the code will work with an instance
-* Using sinon, other test will pass!
+* Other test frameworks didn't work
 
 ## Step 12 - Triangulation?
 
