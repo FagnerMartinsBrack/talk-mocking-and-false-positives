@@ -51,8 +51,9 @@
 
 * Ok, let's put the table back
 * Pass instance, assuming the code will work with an instance
+* Using sinon, other test will pass!
 
-## Step 12 - Generative testing?
+## Step 12 - Triangulation?
 
 * Many samples might help catching something wrong
 * Still not 100%

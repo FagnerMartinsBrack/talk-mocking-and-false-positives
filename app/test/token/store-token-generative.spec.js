@@ -7,7 +7,7 @@ const expect = require( "expect.js" );
 const sandbox = require( "sinon" ).sandbox.create();
 
 describe( "Generative testing", function() {
-  ["A", "LOT", "OF", "RANDOM", "STRINGS"].forEach(function( randomString ) {
+  ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
     describe( `Given '${randomString}'`, function() {
       let fakeToken;
 

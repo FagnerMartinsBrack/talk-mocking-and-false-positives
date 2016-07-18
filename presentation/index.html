@@ -140,7 +140,7 @@
       >
         <h2 class="secondary-header">The problem? 눈_눈</h2>
         <pre><code class="javascript">
-          module.exports = function( token ) {
+          module.exports = function storeToken( token ) {
             return Promise.try(function() {
               if ( !isValid( token ) ) {
                 return Promise.reject( new Error( "Token is not valid" ) );
@@ -261,9 +261,9 @@
         data-rotate-x="-40"
         data-rotate-y="0"
       >
-        <h2 class="secondary-header">Generative testing? ٩◔̯◔۶</h2>
+        <h2 class="secondary-header">Triangulation? ٩◔̯◔۶</h2>
         <pre><code class="javascript">
-          ["A", "LOT", "OF", "RANDOM", "STRINGS"].forEach(function( randomString ) {
+          ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
             describe( `Given '${randomString}'`, function() {
               let fakeToken;
 
