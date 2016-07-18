@@ -6,16 +6,16 @@ const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
 const sinonSandbox = require( "sinon" ).sandbox.create();
 
-describe( "Generative testing", function() {
+describe.only( "Generative testing", function() {
   ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
-    describe( `Given '${randomString}'`, function() {
+    describe( `Given the token '${randomString}'`, function() {
       let fakeToken;
 
       beforeEach(function() {
         fakeToken = randomString
       });
 
-      describe( `When storeToken('${randomString}')`, function() {
+      describe( `When storing '${randomString}'`, function() {
         let promiseToStoreToken;
         let apiPostRequestSpy;
 
@@ -28,7 +28,7 @@ describe( "Generative testing", function() {
           sinonSandbox.restore();
         });
 
-        it( `calls apiRequest.post('${randomString}')`, function() {
+        it( "persists", function() {
           return Promise.try(function() {
             return promiseToStoreToken;
           }).then(function() {

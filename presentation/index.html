@@ -83,14 +83,14 @@
       >
         <h2 class="secondary-header">Writing the test! ヽ(´▽`)/</h2>
         <pre><code class="javascript">
-          describe( "Given a fakeToken", function() {
+          describe( "Given a token", function() {
             let fakeToken;
 
             beforeEach(function() {
               fakeToken = "INVALID"
             });
 
-            describe( "When storeToken(fakeToken)", function() {
+            describe( "When storing", function() {
               let promiseToStoreToken;
               let apiPostRequestSpy;
 
@@ -103,7 +103,7 @@
                 sinonSandbox.restore();
               });
 
-              it( "calls apiRequest.post('/store-token', fakeToken)", function() {
+              it( "persists", function() {
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
@@ -124,9 +124,9 @@
       >
         <h2 class="secondary-header">Running ☜(⌒▽⌒)☞ the test!</h2>
         <pre><code class="nohighlight hljs">
-          Given a fakeToken
-            When storeToken(fakeToken)
-              ✓ calls apiRequest.post(fakeToken)
+          Given a token
+            When storing
+              ✓ persists
         </code></pre>
       </div>
       <div
@@ -179,8 +179,8 @@
       >
         <h2 class="secondary-header">Run the test... ε=ε=ε=┌(;*´Д`)ﾉ</h2>
         <pre><code class="nohighlight hljs">
-          Given a fakeToken
-            When storeToken(fakeToken)
+          Given a token
+            When storing
               ...
         </code></pre>
       </div>
@@ -193,9 +193,9 @@
       >
         <h2 class="secondary-header">...success! (╯°□°）╯︵ ┻━┻</h2>
         <pre><code class="nohighlight hljs">
-          Given a fakeToken
-            When storeToken(fakeToken)
-              ✓ calls apiRequest.post(fakeToken)
+          Given a token
+            When storing
+              ✓ persists
         </code></pre>
       </div>
       <div
@@ -218,7 +218,7 @@
       >
         <h2 class="secondary-header">Pass by reference! ┬─┬﻿ ノ( ゜-゜ノ)</h2>
         <pre><code class="javascript">
-          describe( "Given a fakeToken", function() {
+          describe( "Given a token", function() {
             let fakeToken;
 
             beforeEach(function() {
@@ -227,7 +227,7 @@
               // fakeToken = "INVALID"
             });
 
-            describe( "When storeToken(fakeToken)", function() {
+            describe( "When storing", function() {
               let promiseToStoreToken;
               let apiPostRequestSpy;
 
@@ -240,7 +240,7 @@
                 sinonSandbox.restore();
               });
 
-              it( "calls apiRequest.post(fakeToken)", function() {
+              it( "persists", function() {
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
@@ -264,14 +264,14 @@
         <h2 class="secondary-header">Triangulation? ٩◔̯◔۶</h2>
         <pre><code class="javascript">
           ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
-            describe( `Given '${randomString}'`, function() {
+            describe( `Given the token '${randomString}'`, function() {
               let fakeToken;
 
               beforeEach(function() {
                 fakeToken = randomString
               });
 
-              describe( `When storeToken('${randomString}')`, function() {
+              describe( `When storing '${randomString}'`, function() {
                 let promiseToStoreToken;
                 let apiPostRequestSpy;
 
@@ -284,7 +284,7 @@
                   sinonSandbox.restore();
                 });
 
-                it( `calls apiRequest.post('${randomString}')`, function() {
+                it( "persist", function() {
                   return Promise.try(function() {
                     return promiseToStoreToken;
                   }).then(function() {

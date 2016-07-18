@@ -6,7 +6,7 @@ const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
 const sinonSandbox = require( "sinon" ).sandbox.create();
 
-describe.only( "Given a fakeToken", function() {
+describe( "Given a token", function() {
   let fakeToken;
 
   beforeEach(function() {
@@ -14,7 +14,7 @@ describe.only( "Given a fakeToken", function() {
     fakeToken = "INVALID"
   });
 
-  describe( "When storeToken(fakeToken)", function() {
+  describe( "When storing", function() {
     let promiseToStoreToken;
     let apiPostRequestSpy;
 
@@ -27,7 +27,7 @@ describe.only( "Given a fakeToken", function() {
       sinonSandbox.restore();
     });
 
-    it( "calls apiRequest.post('/store-token', fakeToken)", function() {
+    it( "persists", function() {
       return Promise.try(function() {
         return promiseToStoreToken;
       }).then(function() {
