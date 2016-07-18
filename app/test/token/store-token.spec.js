@@ -4,7 +4,7 @@ const apiRequest = require( "../../src/token/api-request" );
 const storeToken = require( "../../src/token/store-token" );
 const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
-const sandbox = require( "sinon" ).sandbox.create();
+const sinonSandbox = require( "sinon" ).sandbox.create();
 
 describe.only( "Given a fakeToken", function() {
   let fakeToken;
@@ -19,12 +19,12 @@ describe.only( "Given a fakeToken", function() {
     let apiPostRequestSpy;
 
     beforeEach(function() {
-      apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+      apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
       promiseToStoreToken = storeToken( fakeToken );
     });
 
     afterEach(function() {
-      sandbox.restore();
+      sinonSandbox.restore();
     });
 
     it( "calls apiRequest.post('/store-token', fakeToken)", function() {

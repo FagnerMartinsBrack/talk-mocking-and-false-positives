@@ -4,7 +4,7 @@ const apiRequest = require( "../../src/token/api-request" );
 const storeToken = require( "../../src/token/store-token" );
 const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
-const sandbox = require( "sinon" ).sandbox.create();
+const sinonSandbox = require( "sinon" ).sandbox.create();
 
 describe( "Generative testing", function() {
   ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
@@ -20,12 +20,12 @@ describe( "Generative testing", function() {
         let apiPostRequestSpy;
 
         beforeEach(function() {
-          apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+          apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
           promiseToStoreToken = storeToken( fakeToken );
         });
 
         afterEach(function() {
-          sandbox.restore();
+          sinonSandbox.restore();
         });
 
         it( `calls apiRequest.post('${randomString}')`, function() {

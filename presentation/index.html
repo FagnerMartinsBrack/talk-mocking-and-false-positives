@@ -95,12 +95,12 @@
               let apiPostRequestSpy;
 
               beforeEach(function() {
-                apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
                 promiseToStoreToken = storeToken( fakeToken );
               });
 
               afterEach(function() {
-                sandbox.restore();
+                sinonSandbox.restore();
               });
 
               it( "calls apiRequest.post('/store-token', fakeToken)", function() {
@@ -232,12 +232,12 @@
               let apiPostRequestSpy;
 
               beforeEach(function() {
-                apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
                 promiseToStoreToken = storeToken( fakeToken );
               });
 
               afterEach(function() {
-                sandbox.restore();
+                sinonSandbox.restore();
               });
 
               it( "calls apiRequest.post(fakeToken)", function() {
@@ -276,12 +276,12 @@
                 let apiPostRequestSpy;
 
                 beforeEach(function() {
-                  apiPostRequestSpy = sandbox.spy( apiRequest, "post" );
+                  apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
                   promiseToStoreToken = storeToken( fakeToken );
                 });
 
                 afterEach(function() {
-                  sandbox.restore();
+                  sinonSandbox.restore();
                 });
 
                 it( `calls apiRequest.post('${randomString}')`, function() {
