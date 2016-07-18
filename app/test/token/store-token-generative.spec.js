@@ -15,7 +15,7 @@ describe.only( "Generative testing", function() {
         fakeToken = randomString
       });
 
-      describe( `When storing '${randomString}'`, function() {
+      describe( `When storing the token '${randomString}'`, function() {
         let promiseToStoreToken;
         let mockedApiRequest;
 

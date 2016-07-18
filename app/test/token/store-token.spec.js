@@ -14,7 +14,7 @@ describe( "Given a token", function() {
     fakeToken = "INVALID"
   });
 
-  describe( "When storing", function() {
+  describe( "When storing the token", function() {
     let promiseToStoreToken;
     let mockedApiRequest;
 
