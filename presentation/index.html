@@ -59,7 +59,7 @@
       >
         <h2 class="secondary-header">Scenario</h2>
         <pre><code class="javascript">
-          module.exports = function storeToken( token ) {
+          module.exports = function storeToken( token, apiRequest ) {
             return Promise.try(function() {
               if ( !isValid( token ) ) {
                 return Promise.reject( new Error( "Token is not valid" ) );
@@ -92,11 +92,14 @@
 
             describe( "When storing", function() {
               let promiseToStoreToken;
-              let apiPostRequestSpy;
+              let mockedApiRequest;
 
               beforeEach(function() {
-                apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
-                promiseToStoreToken = storeToken( fakeToken );
+                mockedApiRequest = sinonSandbox
+                  .mock( apiRequest )
+                  .expects( "post" )
+                  .withExactArgs( "/store-token", fakeToken );
+                promiseToStoreToken = storeToken( fakeToken, apiRequest );
               });
 
               afterEach(function() {
@@ -107,8 +110,7 @@
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
-                  expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
-                  expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                  mockedApiRequest.verify();
                 });
               });
             });
@@ -140,7 +142,7 @@
       >
         <h2 class="secondary-header">The problem? 눈_눈</h2>
         <pre><code class="javascript">
-          module.exports = function storeToken( token ) {
+          module.exports = function storeToken( token, apiRequest ) {
             return Promise.try(function() {
               if ( !isValid( token ) ) {
                 return Promise.reject( new Error( "Token is not valid" ) );
@@ -229,11 +231,14 @@
 
             describe( "When storing", function() {
               let promiseToStoreToken;
-              let apiPostRequestSpy;
+              let mockedApiRequest;
 
               beforeEach(function() {
-                apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
-                promiseToStoreToken = storeToken( fakeToken );
+                mockedApiRequest = sinonSandbox
+                  .mock( apiRequest )
+                  .expects( "post" )
+                  .withExactArgs( "/store-token", fakeToken );
+                promiseToStoreToken = storeToken( fakeToken, apiRequest );
               });
 
               afterEach(function() {
@@ -244,8 +249,7 @@
                 return Promise.try(function() {
                   return promiseToStoreToken;
                 }).then(function() {
-                  expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
-                  expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                  mockedApiRequest.verify();
                 });
               });
             });
@@ -273,23 +277,25 @@
 
               describe( `When storing '${randomString}'`, function() {
                 let promiseToStoreToken;
-                let apiPostRequestSpy;
+                let mockedApiRequest;
 
                 beforeEach(function() {
-                  apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
-                  promiseToStoreToken = storeToken( fakeToken );
+                  mockedApiRequest = sinonSandbox
+                    .mock( apiRequest )
+                    .expects( "post" )
+                    .withExactArgs( "/store-token", fakeToken );
+                  promiseToStoreToken = storeToken( fakeToken, apiRequest );
                 });
 
                 afterEach(function() {
                   sinonSandbox.restore();
                 });
 
-                it( "persist", function() {
+                it( "persists", function() {
                   return Promise.try(function() {
                     return promiseToStoreToken;
                   }).then(function() {
-                    expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
-                    expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+                    mockedApiRequest.verify();
                   });
                 });
               });

@@ -16,11 +16,14 @@ describe( "Given a token", function() {
 
   describe( "When storing", function() {
     let promiseToStoreToken;
-    let apiPostRequestSpy;
+    let mockedApiRequest;
 
     beforeEach(function() {
-      apiPostRequestSpy = sinonSandbox.spy( apiRequest, "post" );
-      promiseToStoreToken = storeToken( fakeToken );
+      mockedApiRequest = sinonSandbox
+        .mock( apiRequest )
+        .expects( "post" )
+        .withExactArgs( "/store-token", fakeToken );
+      promiseToStoreToken = storeToken( fakeToken, apiRequest );
     });
 
     afterEach(function() {
@@ -31,8 +34,7 @@ describe( "Given a token", function() {
       return Promise.try(function() {
         return promiseToStoreToken;
       }).then(function() {
-        expect(apiPostRequestSpy.getCall(0).args[0]).to.be( "/store-token" );
-        expect(apiPostRequestSpy.getCall(0).args[1]).to.be( fakeToken );
+        mockedApiRequest.verify();
       });
     });
   });
