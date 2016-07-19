@@ -5,6 +5,7 @@
     <title>SydJS - Mocking and False Positives</title>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
     <link href="static/css/index.css" rel="stylesheet">
+    <link href="static/css/spotlight.css" rel="stylesheet">
     <link href="static/css/headers.css" rel="stylesheet">
     <link href="static/css/layout.css" rel="stylesheet">
     <link href="static/css/fallback.css" rel="stylesheet">
@@ -58,6 +59,9 @@
         data-z="500"
       >
         <h2 class="secondary-header">Scenario</h2>
+        <div class="spotlight spotlight-scenario-complexity"></div>
+        <div class="spotlight spotlight-scenario-token-argument"></div>
+        <div class="spotlight spotlight-scenario-token-argument-passing"></div>
         <pre><code class="javascript">
           module.exports = function storeToken( token, apiRequest ) {
             return Promise.try(function() {
@@ -82,6 +86,7 @@
         data-rotate-y="0"
       >
         <h2 class="secondary-header">Writing the test! ヽ(´▽`)/</h2>
+        <div class="spotlight spotlight-test-argument-mock"></div>
         <pre><code class="javascript">
           describe( "Given a token", function() {
             let fakeToken;
@@ -141,6 +146,7 @@
         data-rotate-y="0"
       >
         <h2 class="secondary-header">The problem? 눈_눈</h2>
+        <div class="spotlight spotlight-false-positive-problem"></div>
         <pre><code class="javascript">
           module.exports = function storeToken( token, apiRequest ) {
             return Promise.try(function() {
@@ -219,12 +225,12 @@
         data-z="500"
       >
         <h2 class="secondary-header">Pass by reference! ┬─┬﻿ ノ( ゜-゜ノ)</h2>
+        <div class="spotlight spotlight-passing-reference"></div>
         <pre><code class="javascript">
           describe( "Given a token", function() {
             let fakeToken;
 
             beforeEach(function() {
-              // Here is the difference!
               fakeToken = new String( "INVALID" );
               // fakeToken = "INVALID"
             });
@@ -266,6 +272,7 @@
         data-rotate-y="0"
       >
         <h2 class="secondary-header">Triangulation? ٩◔̯◔۶</h2>
+        <div class="spotlight spotlight-triangulation"></div>
         <pre><code class="javascript">
           ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
             describe( `Given the token '${randomString}'`, function() {

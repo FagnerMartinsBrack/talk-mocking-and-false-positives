@@ -33,3 +33,52 @@ body {
 .impress-on-step-15 .my-name {
   opacity: 0;
 }
+
+.spotlight-scenario-complexity {
+  width: 158px;
+  height: 70px;
+  top: 230px;
+  left: 91px;
+}
+
+.spotlight-scenario-token-argument {
+  width: 88px;
+  height: 40px;
+  top: 277px;
+  left: 404px;
+}
+
+.spotlight-test-argument-mock {
+  width: 127px;
+  height: 60px;
+  top: 386px;
+  left: 373px;
+}
+
+.spotlight-scenario-token-argument-passing {
+  width: 88px;
+  height: 40px;
+  top: 156px;
+  left: 356px;
+}
+
+.spotlight-false-positive-problem {
+  width: 317px;
+  height: 86px;
+  top: 269px;
+  left: 86px;
+}
+
+.spotlight-passing-reference {
+  width: 317px;
+  height: 86px;
+  top: 205px;
+  left: 86px;
+}
+
+.spotlight-triangulation {
+  width: 241px;
+  height: 58px;
+  top: 157px;
+  left: 74px;
+}
