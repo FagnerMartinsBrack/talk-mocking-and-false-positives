@@ -62,7 +62,7 @@
   * 2 sextants - Check if both are likely to be correct
   * 3 sextants - If 2 are not correct, the third will point which one is most likely to be
 
-## Step 13 - Avoid mocks!
+## Step 13 - Isolate the concerns!
 
 * Functions should be small and do one thing
 * Code review static testing

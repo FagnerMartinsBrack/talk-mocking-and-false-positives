@@ -310,10 +310,10 @@
         data-rotate="90"
         data-z="500"
       >
-        <h2 class="secondary-header">Avoid mocks! ¯\_(ツ)_/¯</h2>
+        <h2 class="secondary-header">Isolate the concerns! ¯\_(ツ)_/¯</h2>
         <pre><code class="javascript">
           // No complexity
-          module.exports = function storeToken( token ) {
+          module.exports = function storeToken( token, apiRequest ) {
             return Promise.try(function() {
               return apiRequest.post( "/store-token", token );
             });
