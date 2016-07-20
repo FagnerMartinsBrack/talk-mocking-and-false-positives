@@ -10,8 +10,8 @@ describe( "Given a token", function() {
   let fakeToken;
 
   beforeEach(function() {
-    // fakeToken = new String( "INVALID" );
-    fakeToken = "INVALID"
+    // fakeToken = new String( "000000" );
+    fakeToken = "000000"
   });
 
   describe( "When storing the token", function() {

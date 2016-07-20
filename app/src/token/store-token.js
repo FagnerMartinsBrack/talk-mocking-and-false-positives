@@ -3,7 +3,7 @@
 const Promise = require( "bluebird" );
 
 const isValid = require( "./validation/is-valid" );
-const shouldMarkAsInvalid = require( "./invalidation/should-mark-as-invalid" );
+const shouldMarkAsEmpty = require( "./invalidation/should-mark-as-empty" );
 
 module.exports = function storeToken( token, apiRequest ) {
   return Promise.try(function() {
@@ -13,8 +13,8 @@ module.exports = function storeToken( token, apiRequest ) {
 
     // complexity
 
-    if ( shouldMarkAsInvalid( token ) ) {
-      token = "INVALID";
+    if ( shouldMarkAsEmpty( token ) ) {
+      token = "000000";
     }
 
     // complexity

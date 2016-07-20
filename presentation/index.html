@@ -92,7 +92,7 @@
             let fakeToken;
 
             beforeEach(function() {
-              fakeToken = "INVALID"
+              fakeToken = "000000"
             });
 
             describe( "When storing the token", function() {
@@ -156,8 +156,8 @@
 
               // complexity
 
-              if ( shouldMarkAsInvalid( token ) ) {
-                token = "INVALID";
+              if ( shouldMarkAsEmpty( token ) ) {
+                token = "000000";
               }
 
               // complexity
@@ -231,8 +231,8 @@
             let fakeToken;
 
             beforeEach(function() {
-              fakeToken = new String( "INVALID" );
-              // fakeToken = "INVALID"
+              fakeToken = new String( "000000" );
+              // fakeToken = "000000"
             });
 
             describe( "When storing the token", function() {
