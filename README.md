@@ -1,9 +1,13 @@
 # Mocking And False Positives
 
-## Presentation
+## Local Presentation
 
 To run the presentation just open `/presentation/index.html` locally  
 To open the notes, just open `/presentation/notes.txt` in a separate screen
+
+## Online Presentation
+
+Access [https://FagnerMartinsBrack.github.io/talk-mocking-and-false-positives](https://FagnerMartinsBrack.github.io/talk-mocking-and-false-positives)
 
 ## Running the examples
 
