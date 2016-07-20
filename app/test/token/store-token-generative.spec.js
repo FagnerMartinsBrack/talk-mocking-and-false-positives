@@ -6,7 +6,7 @@ const Promise = require( "bluebird" );
 const expect = require( "expect.js" );
 const sinonSandbox = require( "sinon" ).sandbox.create();
 
-describe.only( "Generative testing", function() {
+describe( "Generative testing", function() {
   ["SOME", "RANDOM", "STRINGS"].forEach(function( randomString ) {
     describe( `Given the token '${randomString}'`, function() {
       let fakeToken;
