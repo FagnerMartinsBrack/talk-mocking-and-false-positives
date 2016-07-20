@@ -1,5 +1,5 @@
 {
-  "name": "sydjs-mocking-and-false-positives",
+  "name": "talk-mocking-and-false-positives",
   "version": "0.0.0",
   "scripts": {
     "test": "mocha --recursive"
