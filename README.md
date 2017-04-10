@@ -9,6 +9,10 @@ To open the notes, just open `/presentation/notes.txt` in a separate screen
 
 Access [https://FagnerMartinsBrack.github.io/talk-mocking-and-false-positives](https://FagnerMartinsBrack.github.io/talk-mocking-and-false-positives)
 
+## Blog Post
+
+Access https://medium.com/@fagnerbrack/mocking-can-lean-to-nondeterministic-tests-4ba8aef977a0
+
 ## Running the examples
 
 To run the presentation examples, enter the directory `/app/` using the latest version of node and execute the following command:
